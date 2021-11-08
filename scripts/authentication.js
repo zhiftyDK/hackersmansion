@@ -6,6 +6,7 @@ firebase.auth().onAuthStateChanged((user) => {
     }
     else {
         //User is signed out
+        document.getElementById("googleSigninButton").style.display = "block";
     }
 });
 
@@ -35,7 +36,7 @@ function signIn(){
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
         // ...
-        console.log(errorCode + errorMessage + email + credential);
+        document.getElementById("googleSigninButton").style.display = "block";
     });
 }
 
