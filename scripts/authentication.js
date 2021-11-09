@@ -2,7 +2,7 @@ var provider = new firebase.auth.GoogleAuthProvider();
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       // User is signed in
-      loadAuthenticatedPageChanges(user.displayName, user.photoURL, user.email);
+      loadUserMenu(user.displayName, user.photoURL, user.email);
     }
     else {
         //User is signed out
@@ -11,22 +11,18 @@ firebase.auth().onAuthStateChanged((user) => {
 });
 
 function signIn(){
-    firebase.auth().signInWithRedirect(provider);
     firebase.auth()
-    .getRedirectResult()
+    .signInWithPopup(provider)
     .then((result) => {
-        if (result.credential) {
         /** @type {firebase.auth.OAuthCredential} */
         var credential = result.credential;
 
         // This gives you a Google Access Token. You can use it to access the Google API.
         var token = credential.accessToken;
-        // ...
-        }
         // The signed-in user info.
         var user = result.user;
         // ...
-        loadAuthenticatedPageChanges(user.displayName, user.photoURL, user.email);
+        loadUserMenu(user.displayName, user.photoURL, user.email);
     }).catch((error) => {
         // Handle Errors here.
         var errorCode = error.code;
@@ -40,7 +36,7 @@ function signIn(){
     });
 }
 
-function loadAuthenticatedPageChanges(displayName, photoURL, email){
+function loadUserMenu(displayName, photoURL){
     document.getElementById("userMenuName").innerHTML = displayName;
     document.getElementById("userMenuPhoto").src = photoURL;
     document.getElementById("googleSigninButton").style.display = "none";
