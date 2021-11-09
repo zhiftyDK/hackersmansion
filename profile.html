@@ -24,31 +24,38 @@
 <body>
     <div class="container-fluid bg-dark sticky-top">
         <div class="row p-3 shadow align-items-center">
-            <div class="col-10">
+            <div class="col-3">
                 <h1 >
                     <a href="index.html" style="color: white; text-decoration: none;">
                         <h1><i class="fas fa-warehouse"></i> Hackers Mansion</h1>
                     </a>
                 </h1>
             </div>
-            <div class="col-2 text-start d-flex justify-content-end">
-                <!-- Google SignIn Button -->
-                <div class="google-btn" id="googleSigninButton" onclick="signIn()" style="display: none;">
-                    <div class="google-icon-wrapper">
-                      <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
-                    </div>
-                    <p class="btn-text"><b>Sign in with google</b></p>
+            <div class="col-9 text-start d-flex justify-content-end">
+                <!-- Pages -->
+                <div class="btn-group mx-4" id="pages">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <p style="display: inline;">Pages</p>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="./index.html">Homepage</a></li>
+                        <li><a class="dropdown-item" href="./tools.html">Cyber Security Tools</a></li>
+                    </ul>
                 </div>
+                <!-- Google SignIn Button -->
+                <button type="button" class="btn btn-secondary p-2" style="display: none;" id="googleSigninButton" onclick="signIn()">
+                    <p style="display: inline;"><i class="fab fa-google"></i> SignIn</p>
+                </button>
                 <!-- User Menu -->
                 <div class="btn-group" id="userMenu" style="display: none;">
                     <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img style="display: inline; height: 40px; border-radius: 50%;" src="" id="userMenuPhoto">
-                    <p style="display: inline;" id="userMenuName"></p>
+                        <img style="display: inline; height: 20px;" src="" id="userMenuPhoto">
+                        <p style="display: inline;" id="userMenuName"></p>
                     </button>
                     <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="./profile.html">Profile <i class="fas fa-user"></i></a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" style="color: red;" href="javascript:signOut()">SignOut <i class="fas fa-sign-out-alt"></i></a></li>
+                        <li><a class="dropdown-item" href="./profile.html">Profile <i class="fas fa-user"></i></a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" style="color: red;" href="javascript:signOut()">SignOut <i class="fas fa-sign-out-alt"></i></a></li>
                     </ul>
                 </div>
             </div>
