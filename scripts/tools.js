@@ -28,7 +28,6 @@ function like(post){
             signIn();
         }
     });
-    
 }
 
 firebase.database().ref("posts/").on("value", function(posts_object){
