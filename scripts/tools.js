@@ -35,13 +35,20 @@ firebase.database().ref("CyberSecurityPosts/").on("value", function(CyberSecurit
         document.querySelectorAll("#postElements").forEach(function(element){element.remove()});
         console.log(CyberSecurityPosts_object.val(), typeof CyberSecurityPosts_object.val())
         const keys = Object.keys(CyberSecurityPosts_object.val());
-        keys.forEach((key, index) => {
-            const title = eval(`CyberSecurityPosts_object.val().${key}.title`);
-            const desc = eval(`CyberSecurityPosts_object.val().${key}.desc`);
-            const url = eval(`CyberSecurityPosts_object.val().${key}.url`);
-            const photoUrl = eval(`CyberSecurityPosts_object.val().${key}.photoUrl`);
-            const likes = eval(`CyberSecurityPosts_object.val().${key}.likes`);
-            const hasLiked = eval(`CyberSecurityPosts_object.val().${key}.hasLiked.users`);
+        let sortPosts = [];
+        keys.map(key => {
+            sortPosts.push({...eval(`CyberSecurityPosts_object.val().${key}`), key});
+        })
+        sortPosts.sort(({likes:a}, {likes:b}) => b-a);
+        
+        sortPosts.forEach(element => {
+            const key = element.key;
+            const title = element.title;
+            const desc = element.desc;
+            const url = element.url;
+            const photoUrl = element.photoUrl;
+            const likes = element.likes;
+            const hasLiked = element.hasLiked.users;
             const post = document.createElement("div");
             post.id = "postElements";
             post.classList = "text-center bg-light shadow p-4 rounded mb-5";
