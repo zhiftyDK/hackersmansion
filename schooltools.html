@@ -98,7 +98,7 @@
                             </div>
                             <div class="modal-body d-flex mt-2" style="padding-left: 3rem; padding-right: 3rem;">
                                 <div class="input-group">
-                                    <input class="form-control" id="inputFormula" placeholder="Chemical Equation" style="box-shadow: none; border: solid black .1rem;">
+                                    <input class="form-control" id="inputFormula" placeholder="Chemical Equation" style="box-shadow: none; border: solid black .1rem;" autocomplete="off">
                                     <button class="btn btn-dark" id="chemSolveButton" onclick="doBalance()" style="border-radius: 0rem 0.25rem 0.25rem 0rem;">Calculate</button>
                                 </div>                      
                             </div>
@@ -120,8 +120,8 @@
                             </div>
                             <div class="modal-body" style="padding-left: 3rem; padding-right: 3rem;">
                                 <h4>Find Hypotenuse</h4>
-                                <input class="form-control mb-2 mt-3" id="ha" type="text" placeholder="Cathetus (a)">
-                                <input class="form-control mb-2" id="hb" type="text" placeholder="Cathetus (b)">
+                                <input class="form-control mb-2 mt-3" id="ha" type="text" placeholder="Cathetus (a)" autocomplete="off">
+                                <input class="form-control mb-2" id="hb" type="text" placeholder="Cathetus (b)" autocomplete="off">
                                 <div class="input-group">
                                     <input class="form-control mb-2"id="hc" type="text" placeholder="Hypotenuse (c)" readonly>
                                     <button class="btn btn-dark" id="hbtn" onclick="calc1()" style="border-radius: 0rem 0.25rem 0.25rem 0rem; height: 2.4rem;">Calculate</button>
@@ -130,8 +130,8 @@
                             </div>
                             <div class="modal-footer text-center" style="padding-left: 3rem; padding-right: 3rem;">
                                 <h4 class="col-12 text-center">Find Cathetus</h4>
-                                <input class="form-control mb-2 mt-3" id="ka" type="text" placeholder="Hypotenuse (c)">
-                                <input class="form-control mb-2" id="kb" type="text" placeholder="Cathetus (a)">
+                                <input class="form-control mb-2 mt-3" id="ka" type="text" placeholder="Hypotenuse (c)" autocomplete="off">
+                                <input class="form-control mb-2" id="kb" type="text" placeholder="Cathetus (a)" autocomplete="off">
                                 <div class="input-group">
                                     <input class="form-control mb-2"id="kc" type="text" placeholder="Cathetus (b)" readonly>
                                     <button class="btn btn-dark" id="kbtn" onclick="calc2()" style="border-radius: 0rem 0.25rem 0.25rem 0rem; height: 2.4rem;">Calculate</button>
