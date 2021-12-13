@@ -18,7 +18,7 @@
             -ms-overflow-style: none;  /* IE and Edge */
             scrollbar-width: none;  /* Firefox */
         }
-        #res font{
+        .coefficient{
             color: red;
         }
     </style>
@@ -70,30 +70,73 @@
                 <div class="col-12 mb-5 mt-3 text-center">
                     <h1 style="color: white;">School Tools</h1>
                 </div>
-                <div class="col-5" id="SchoolPosts">
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="setTimeout(() => { document.getElementById('chemeuqation').focus() }, 500);">
-                        Chemical Equation Balancer
-                    </button>
+                <div class="col-5 text-center" id="SchoolPosts">
+                    <!-- Tools -->
+                    <div class="bg-light p-4 mb-5 rounded">
+                        <h2>Chemical Equation Balancer</h2>
+                        <p>If there are no inequalities, the chemical equation is said to be balanced. In this example, every element now has an equal number of atoms in the reactant and product side. Therefore, the balanced chemical equation is C3H8 + 5O2 → 3CO2 + 4H2O.</p>
+                        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#chemEquBalance" onclick="setTimeout(() => { document.getElementById('inputFormula').focus() }, 500);">
+                            Launch
+                        </button>
+                    </div>
+
+                    <div class="bg-light p-4 mb-5 rounded">
+                        <h2>Pythagoras Calculator</h2>
+                        <p>In mathematics, the Pythagorean theorem, or Pythagoras' theorem, is a fundamental relation in Euclidean geometry among the three sides of a right triangle. It states that the area of the square whose side is the hypotenuse is equal to the sum of the areas of the squares on the other two sides.</p>
+                        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#pythagorasCalc" onclick="setTimeout(() => { document.getElementById('inputFormula').focus() }, 500);">
+                            Launch
+                        </button>
+                    </div>
                     
-                    <!-- Modal -->
-                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <!-- Modals -->
+                    <div class="modal fade" id="chemEquBalance" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="chemEquBalanceLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Chemical Equation Balancer</h5>
+                            <h5 class="modal-title" id="chemEquBalanceLabel">Chemical Equation Balancer</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body d-flex mt-2" style="padding-left: 3rem; padding-right: 3rem;">
                                 <div class="input-group">
-                                    <input class="form-control" id="chemeuqation" placeholder="Chemical Equation" style="box-shadow: none; border: solid black .1rem;">
-                                    <button class="btn btn-secondary" id="chemeuqationbutton" onclick="equsolve()" style="border-radius: 0rem 0.25rem 0.25rem 0rem;">Calculate</button>
-                                    <textarea id="detailed" style="display: none;"></textarea>
+                                    <input class="form-control" id="inputFormula" placeholder="Chemical Equation" style="box-shadow: none; border: solid black .1rem;">
+                                    <button class="btn btn-secondary" id="chemSolveButton" onclick="doBalance()" style="border-radius: 0rem 0.25rem 0.25rem 0rem;">Calculate</button>
                                 </div>                      
                             </div>
                             <div class="modal-body text-center p-2">
-                                <p id="res"></p>
-                                <p id="error" style="color: red;"></p>                       
+                                <p id="balanced"></p>
+                                <p id="message"></p>
+                                <p id="codeOutput"></p>         
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="pythagorasCalc" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="pythagorasCalcLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="pythagorasCalcLabel">Pythagoras Calculator</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body" style="padding-left: 3rem; padding-right: 3rem;">
+                                <h4>Find Hypotenuse</h4>
+                                <input class="form-control mb-2 mt-3" id="ha" type="text" placeholder="Cathetus (a)">
+                                <input class="form-control mb-2" id="hb" type="text" placeholder="Cathetus (b)">
+                                <div class="input-group">
+                                    <input class="form-control mb-2"id="hc" type="text" placeholder="Hypotenuse (c)" readonly>
+                                    <button class="btn btn-dark" id="hbtn" onclick="calc1()" style="border-radius: 0rem 0.25rem 0.25rem 0rem; height: 2.4rem;">Calculate</button>
+                                </div>
+                                <p class="mt-2 mb-1" id="hp"></p>
+                            </div>
+                            <div class="modal-footer text-center" style="padding-left: 3rem; padding-right: 3rem;">
+                                <h4 class="col-12 text-center">Find Cathetus</h4>
+                                <input class="form-control mb-2 mt-3" id="ka" type="text" placeholder="Hypotenuse (c)">
+                                <input class="form-control mb-2" id="kb" type="text" placeholder="Cathetus (a)">
+                                <div class="input-group">
+                                    <input class="form-control mb-2"id="kc" type="text" placeholder="Cathetus (b)" readonly>
+                                    <button class="btn btn-dark" id="kbtn" onclick="calc2()" style="border-radius: 0rem 0.25rem 0.25rem 0rem; height: 2.4rem;">Calculate</button>
+                                </div>
+                                <p class="col-12 mt-2 mb-1 text-center" id="kp"></p>
                             </div>
                         </div>
                         </div>
@@ -104,10 +147,6 @@
         </div>
     </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="./scripts/chemequbalancer.js"></script>
-    
     <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
@@ -127,5 +166,7 @@
         </script>
     <script src="./scripts/authentication.js"></script>
     <script src="./scripts/schooltools.js"></script>
+    <script src="./scripts/chemsolve.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
 </body>
 </html>
