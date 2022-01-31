@@ -21,6 +21,10 @@
         .coefficient{
             color: red;
         }
+        
+        .hide{
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -70,7 +74,10 @@
                 <div class="col-12 mb-5 mt-3 text-center">
                     <h1 style="color: white;">School Tools</h1>
                 </div>
-                <div class="col-5 text-center" id="SchoolPosts">
+                <div class="col-12 mb-5 text-center d-flex justify-content-center">
+                    <input class="form-control" id="searchBar" type="search" placeholder="Search" aria-label="Search" style="width: 50vw;">
+                </div>
+                <div class="col-5 text-center mt-4" id="SchoolPosts">
                     <!-- Tools -->
                     <div class="bg-light p-4 mb-5 rounded">
                         <h2>Chemical Equation Balancer</h2>
@@ -84,6 +91,22 @@
                         <h2>Pythagoras Calculator</h2>
                         <p>In mathematics, the Pythagorean theorem, or Pythagoras' theorem, is a fundamental relation in Euclidean geometry among the three sides of a right triangle. It states that the area of the square whose side is the hypotenuse is equal to the sum of the areas of the squares on the other two sides.</p>
                         <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#pythagorasCalc" onclick="setTimeout(() => { document.getElementById('inputFormula').focus() }, 500);">
+                            Launch
+                        </button>
+                    </div>
+
+                    <div class="bg-light p-4 mb-5 rounded">
+                        <h2>Law of Cosines</h2>
+                        <p>In trigonometry, the law of cosines (also known as the cosine formula, cosine rule, or al-Kashi's theorem[1]) relates the lengths of the sides of a triangle to the cosine of one of its angles. The law of cosines is useful for computing the third side of a triangle when two sides and their enclosed angle are known, and in computing the angles of a triangle if all three sides are known.</p>
+                        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#cosinesCalc" onclick="setTimeout(() => { document.getElementById('inputFormula').focus() }, 500);">
+                            Launch
+                        </button>
+                    </div>
+
+                    <div class="bg-light p-4 mb-5 rounded">
+                        <h2>Law of Sines</h2>
+                        <p>In trigonometry, the law of sines, sine law, sine formula, or sine rule is an equation relating the lengths of the sides of a triangle (any shape) to the sines of its angles. The law of sines can be used to compute the remaining sides of a triangle when two angles and a side are known—a technique known as triangulation. It can also be used when two sides and one of the non-enclosed angles are known.</p>
+                        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#sinesCalc" onclick="setTimeout(() => { document.getElementById('inputFormula').focus() }, 500);">
                             Launch
                         </button>
                     </div>
@@ -106,6 +129,37 @@
                                 <p id="balanced"></p>
                                 <p id="message"></p>
                                 <p id="codeOutput"></p>         
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="pythagorasCalc" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="pythagorasCalcLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="pythagorasCalcLabel">Pythagoras Calculator</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body" style="padding-left: 3rem; padding-right: 3rem;">
+                                <h4>Find Hypotenuse</h4>
+                                <input class="form-control mb-2 mt-3" id="ha" type="text" placeholder="Cathetus (a)" autocomplete="off">
+                                <input class="form-control mb-2" id="hb" type="text" placeholder="Cathetus (b)" autocomplete="off">
+                                <div class="input-group">
+                                    <input class="form-control mb-2"id="hc" type="text" placeholder="Hypotenuse (c)" readonly>
+                                    <button class="btn btn-dark" id="hbtn" onclick="calc1()" style="border-radius: 0rem 0.25rem 0.25rem 0rem; height: 2.4rem;">Calculate</button>
+                                </div>
+                                <p class="mt-2 mb-1" id="hp"></p>
+                            </div>
+                            <div class="modal-footer text-center" style="padding-left: 3rem; padding-right: 3rem;">
+                                <h4 class="col-12 text-center">Find Cathetus</h4>
+                                <input class="form-control mb-2 mt-3" id="ka" type="text" placeholder="Hypotenuse (c)" autocomplete="off">
+                                <input class="form-control mb-2" id="kb" type="text" placeholder="Cathetus (a)" autocomplete="off">
+                                <div class="input-group">
+                                    <input class="form-control mb-2"id="kc" type="text" placeholder="Cathetus (b)" readonly>
+                                    <button class="btn btn-dark" id="kbtn" onclick="calc2()" style="border-radius: 0rem 0.25rem 0.25rem 0rem; height: 2.4rem;">Calculate</button>
+                                </div>
+                                <p class="col-12 mt-2 mb-1 text-center" id="kp"></p>
                             </div>
                         </div>
                         </div>

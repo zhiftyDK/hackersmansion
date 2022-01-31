@@ -1,4 +1,16 @@
-var input1 = document.getElementById("ha");
+document.getElementById("searchBar").addEventListener("input", function(e){
+    let value = e.target.value;
+    document.querySelectorAll("#SchoolPosts .rounded").forEach(element => {
+        let titles = element.children[0].innerText.toLowerCase();
+        if (titles.includes(value.toLowerCase())) {
+            element.classList.remove("hide");
+        } else {
+            element.classList.add("hide");
+        }
+    });
+});
+
+    var input1 = document.getElementById("ha");
       input1.addEventListener("keyup", function(event) {
         if (event.keyCode === 13) {
         event.preventDefault();
