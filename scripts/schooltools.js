@@ -65,3 +65,21 @@ document.getElementById("searchBar").addEventListener("input", function(e){
       document.getElementById("kc").value = Math.sqrt(ksqrt);
       document.getElementById("kp").innerHTML = kka+"² - "+kkb+"² = "+ksqrt+". √"+ksqrt+" = "+Math.sqrt(ksqrt);
     }
+
+function cosinesSelect(){
+    const modal1 = document.getElementById("1");
+    const modal2 = document.getElementById("2");
+    const modal3 = document.getElementById("3");
+    const modal4 = document.getElementById("4");
+    const modal5 = document.getElementById("5");
+    const modal6 = document.getElementById("6");
+    const selector = document.getElementById("cosinesSelector");
+
+    for (let i = 1; i < 7; i++) {
+        if (selector.value == i) {
+            eval("modal" + i + ".style.display = 'block'");
+        } else {
+            eval("modal" + i + ".style.display = 'none'");
+        }
+    }
+}
