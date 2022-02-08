@@ -83,3 +83,59 @@ function cosinesSelect(){
         }
     }
 }
+
+//Molecular Polarity
+document.getElementById("polarityInput").addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      document.getElementById("polarityButton").click();
+    }
+  });
+function polarityCalc() {
+    const chemicalElementArray = document.getElementById("polarityInput").value.replace(/[0-9]/g, '').split(/(?=[A-Z])/);
+    console.log(chemicalElementArray);
+
+    const H = 2.2;
+    const Li = 0.98;
+    const Na = 0.93;
+    const K = 0.82;
+    const Rb = 0.82;
+    const Cs = 0.79;
+    const Be = 1.57;
+    const Mg = 1.31;
+    const Ca = 1;
+    const Sr = 0.95;
+    const Ba = 0.89;
+    const B = 2.04;
+    const Al = 1.61;
+    const Ga = 1.81;
+    const In = 1.78;
+    const C = 2.55;
+    const Si = 1.9;
+    const Ge = 2.01;
+    const Sn = 1.96;
+    const Pb = 2.33;
+    const N = 3.04;
+    const P = 2.19;
+    const As = 2.18;
+    const Sb = 2.05;
+    const O = 3.44;
+    const S = 2.58;
+    const Se = 2.55;
+    const Te = 2.1;
+    const F = 3.98;
+    const Cl = 3.16;
+    const Br = 2.96;
+    const I = 2.66;
+
+    const electronegativitydifference = parseFloat(eval(`${chemicalElementArray[0]} - ${chemicalElementArray[1]}`).toString().replace("-", ""));
+    if(electronegativitydifference == 0) {
+        document.getElementById("polarityOutput").innerHTML = `<p>Electronegativity Difference: ${electronegativitydifference}</p><p>Polarity: non-polar</p><p>Bondtype: Covalent</p>`;
+    } else if(electronegativitydifference > 0 && electronegativitydifference < 0.5) {
+        document.getElementById("polarityOutput").innerHTML = `<p>Electronegativity Difference: ${electronegativitydifference}</p><p>Polarity: non-polar</p><p>Bondtype: Covalent</p>`;
+    } else if(electronegativitydifference > 0.5 && electronegativitydifference < 2) {
+        document.getElementById("polarityOutput").innerHTML = `<p>Electronegativity Difference: ${electronegativitydifference}</p><p>Polarity: polar</p><p>Bondtype: Polar Covalent</p>`;
+    } else if(electronegativitydifference > 2) {
+        document.getElementById("polarityOutput").innerHTML = `<p>Electronegativity Difference: ${electronegativitydifference}</p><p>Bondtype: Ionic</p>`;
+    }
+}

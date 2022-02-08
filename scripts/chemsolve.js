@@ -6,8 +6,7 @@
  * https://www.nayuki.io/page/chemical-equation-balancer-javascript
  */
 "use strict";
-const input = document.getElementById("inputFormula");
-input.addEventListener("keyup", function(event) {
+document.getElementById("inputFormula").addEventListener("keyup", function(event) {
   if (event.keyCode === 13) {
     event.preventDefault();
     document.getElementById("chemSolveButton").click();
