@@ -94,7 +94,6 @@ document.getElementById("polarityInput").addEventListener("keyup", function(even
 
 function polarityCalc() {
     const chemicalElementArray = document.getElementById("polarityInput").value.replace(/[0-9]/g, '').split(/(?=[A-Z])/);
-    console.log(chemicalElementArray);
 
     const H = 2.2;
     const Li = 0.98;
@@ -129,14 +128,19 @@ function polarityCalc() {
     const Br = 2.96;
     const I = 2.66;
 
-    const electronegativitydifference = parseFloat(eval(`${chemicalElementArray[0]} - ${chemicalElementArray[1]}`).toString().replace("-", ""));
-    if(electronegativitydifference == 0) {
-        document.getElementById("polarityOutput").innerHTML = `<p><strong>Electronegativity Difference:</strong> ${electronegativitydifference}</p><p><strong>Polarity:</strong> non-polar</p><p><strong>Bondtype:</strong> Covalent</p>`;
-    } else if(electronegativitydifference > 0 && electronegativitydifference < 0.5) {
-        document.getElementById("polarityOutput").innerHTML = `<p><strong>Electronegativity Difference:</strong> ${electronegativitydifference}</p><p><strong>Polarity:</strong> non-polar</p><p><strong>Bondtype:</strong> Covalent</p>`;
-    } else if(electronegativitydifference > 0.5 && electronegativitydifference < 2) {
-        document.getElementById("polarityOutput").innerHTML = `<p><strong>Electronegativity Difference:</strong> ${electronegativitydifference}</p><p><strong>Polarity:</strong> polar</p><p><strong>Bondtype:</strong> Polar Covalent</p>`;
-    } else if(electronegativitydifference > 2) {
-        document.getElementById("polarityOutput").innerHTML = `<p><strong>Electronegativity Difference:</strong> ${electronegativitydifference}</p><p><strong>Bondtype:</strong> Ionic</p>`;
+    try {
+        const electronegativitydifference = Math.abs(parseFloat(eval(`${chemicalElementArray[0]} - ${chemicalElementArray[1]}`)));
+        if(electronegativitydifference == 0) {
+            document.getElementById("polarityOutput").innerHTML = `<p><strong>Electronegativity Difference:</strong> ${electronegativitydifference}</p><p><strong>Polarity:</strong> non-polar</p><p><strong>Bondtype:</strong> Covalent</p>`;
+        } else if(electronegativitydifference > 0 && electronegativitydifference < 0.5) {
+            document.getElementById("polarityOutput").innerHTML = `<p><strong>Electronegativity Difference:</strong> ${electronegativitydifference}</p><p><strong>Polarity:</strong> non-polar</p><p><strong>Bondtype:</strong> Covalent</p>`;
+        } else if(electronegativitydifference > 0.5 && electronegativitydifference < 2) {
+            document.getElementById("polarityOutput").innerHTML = `<p><strong>Electronegativity Difference:</strong> ${electronegativitydifference}</p><p><strong>Polarity:</strong> polar</p><p><strong>Bondtype:</strong> Polar Covalent</p>`;
+        } else if(electronegativitydifference > 2) {
+            document.getElementById("polarityOutput").innerHTML = `<p><strong>Electronegativity Difference:</strong> ${electronegativitydifference}</p><p><strong>Bondtype:</strong> Ionic</p>`;
+        }
+    } catch (error) {
+        document.getElementById("polarityOutput").innerHTML = `<p id="polarityOutputError" style="color: red;">${error}</p>`
+        document.getElementById("polarityOutputError").innerHTML = `${document.getElementById("polarityOutputError").innerText.replace("is not defined", "").replace("ReferenceError: ", "")} is not a chemical element or<br> does not have an electronegativity`
     }
 }
