@@ -91,6 +91,7 @@ document.getElementById("polarityInput").addEventListener("keyup", function(even
       document.getElementById("polarityButton").click();
     }
   });
+
 function polarityCalc() {
     const chemicalElementArray = document.getElementById("polarityInput").value.replace(/[0-9]/g, '').split(/(?=[A-Z])/);
     console.log(chemicalElementArray);
@@ -130,12 +131,12 @@ function polarityCalc() {
 
     const electronegativitydifference = parseFloat(eval(`${chemicalElementArray[0]} - ${chemicalElementArray[1]}`).toString().replace("-", ""));
     if(electronegativitydifference == 0) {
-        document.getElementById("polarityOutput").innerHTML = `<p>Electronegativity Difference: ${electronegativitydifference}</p><p>Polarity: non-polar</p><p>Bondtype: Covalent</p>`;
+        document.getElementById("polarityOutput").innerHTML = `<p><strong>Electronegativity Difference:</strong> ${electronegativitydifference}</p><p><strong>Polarity:</strong> non-polar</p><p><strong>Bondtype:</strong> Covalent</p>`;
     } else if(electronegativitydifference > 0 && electronegativitydifference < 0.5) {
-        document.getElementById("polarityOutput").innerHTML = `<p>Electronegativity Difference: ${electronegativitydifference}</p><p>Polarity: non-polar</p><p>Bondtype: Covalent</p>`;
+        document.getElementById("polarityOutput").innerHTML = `<p><strong>Electronegativity Difference:</strong> ${electronegativitydifference}</p><p><strong>Polarity:</strong> non-polar</p><p><strong>Bondtype:</strong> Covalent</p>`;
     } else if(electronegativitydifference > 0.5 && electronegativitydifference < 2) {
-        document.getElementById("polarityOutput").innerHTML = `<p>Electronegativity Difference: ${electronegativitydifference}</p><p>Polarity: polar</p><p>Bondtype: Polar Covalent</p>`;
+        document.getElementById("polarityOutput").innerHTML = `<p><strong>Electronegativity Difference:</strong> ${electronegativitydifference}</p><p><strong>Polarity:</strong> polar</p><p><strong>Bondtype:</strong> Polar Covalent</p>`;
     } else if(electronegativitydifference > 2) {
-        document.getElementById("polarityOutput").innerHTML = `<p>Electronegativity Difference: ${electronegativitydifference}</p><p>Bondtype: Ionic</p>`;
+        document.getElementById("polarityOutput").innerHTML = `<p><strong>Electronegativity Difference:</strong> ${electronegativitydifference}</p><p><strong>Bondtype:</strong> Ionic</p>`;
     }
 }
