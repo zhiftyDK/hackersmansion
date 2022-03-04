@@ -119,6 +119,14 @@
                             Launch
                         </button>
                     </div>
+
+                    <div class="bg-light p-4 mb-5 rounded">
+                        <h2>Oxidation Number Calculator</h2>
+                        <p>Calculates the oxidation number of any molecules</p>
+                        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#oxidationCalc" onclick="setTimeout(() => { document.getElementById('polarityInput').focus() }, 500);">
+                            Launch
+                        </button>
+                    </div>
                     
                     <!-- Modals -->
                     <div class="modal fade" id="chemEquBalance" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="chemEquBalanceLabel" aria-hidden="true">
@@ -291,6 +299,25 @@
                         </div>
                         </div>
                     </div>
+
+                    <div class="modal fade" id="oxidationCalc" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="polarityCalcLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="oxidationCalcLabel">Oxydation Number Calculator</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body d-flex mt-2" style="padding-left: 3rem; padding-right: 3rem;">
+                                <div class="input-group">
+                                    <input class="form-control" id="oxidationInput" placeholder="Chemical Molecule" style="box-shadow: none; border: solid black .1rem;" autocomplete="off">
+                                    <button class="btn btn-dark" id="oxidationButton" onclick="oxidationCalc()" style="border-radius: 0rem 0.25rem 0.25rem 0rem;">Calculate</button>
+                                </div>                      
+                            </div>
+                            <div class="modal-body text-center p-2" id="polarityOutput"></div>
+                        </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

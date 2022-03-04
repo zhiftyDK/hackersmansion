@@ -144,3 +144,15 @@ function polarityCalc() {
         document.getElementById("polarityOutputError").innerHTML = `${document.getElementById("polarityOutputError").innerText.replace("is not defined", "").replace("ReferenceError: ", "")} is not a chemical element or<br> does not have an electronegativity`
     }
 }
+
+//Oxidation Number
+document.getElementById("oxidationInput").addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      document.getElementById("oxidationButton").click();
+    }
+  });
+function oxidationCalc(){
+    const molecule = document.getElementById("oxidationInput").value;
+    window.open("https://www.wolframalpha.com/widget/widgetPopup.jsp?p=v&id=f03762750c62a519939daf9ff2b3f904&title=Oxidation%20Number%20Calculator&theme=blue&i0=" + molecule + "&podSelect=", '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
+}
